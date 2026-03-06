@@ -116,7 +116,7 @@ jobs:
 
       - name: Deploy via SSM
         env:
-          IMAGE: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMAGE_NAME }}:latest
+          IMAGE: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMAGE_NAME }}:${{ needs.release.outputs.tag }}
         run: |
           SCRIPT=$(cat <<DEPLOY
           docker rmi $IMAGE 2>/dev/null || true
